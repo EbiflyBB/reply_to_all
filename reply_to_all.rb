@@ -15,7 +15,7 @@ Plugin.create :reply_to_all do
     rep_to.slice!("@#{Service.primary.idname} ")
 
     opt.widget.create_postbox(to: messages,
-                              header: messages.map{|x| "#{rep_to}"}.join(' ') + ' ',
+                              header: "#{rep_to }",
                               use_blind_footer: !UserConfig[:footer_exclude_reply])
   end
 end
