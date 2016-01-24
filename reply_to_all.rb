@@ -10,7 +10,7 @@ Plugin.create :reply_to_all do
           role: :timeline) do |opt|
     messages = opt.messages.map(&:message)
 
-    ids = opt.messages.to_s.scan(%r<@[a-zA-Z0-9]+>)
+    ids = opt.messages.to_s.scan(%r<@[a-zA-Z0-9\_]+>)
     rep_to = ids.uniq.join(' ')
     rep_to.slice!("@#{Service.primary.idname} ")
 
