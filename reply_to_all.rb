@@ -11,9 +11,10 @@ Plugin.create :reply_to_all do
     messages = opt.messages.map(&:message)
 
     ids = opt.messages.to_s.scan(%r<@[a-zA-Z0-9]+>)
-    rep_to = ids.join(' ')
+    rep_to = ids.uniq.join(' ')
+
     opt.widget.create_postbox(to: messages,
-                              header: messages.map{|x| "#{rep_to}"}.uniq.join(' ') + ' ',
+                              header: messages.map{|x| "#{rep_to}"}.join(' ') + ' ',
                               use_blind_footer: !UserConfig[:footer_exclude_reply])
   end
 end
