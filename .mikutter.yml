@@ -1,0 +1,9 @@
+---
+slug: :reply_to_all
+depends:
+  mikutter: '3.3'
+  plugin: []
+version: '1.0'
+author: EbiflyBB
+name: reply_to_all
+description: 本文に含まれるID全てにリプライ
