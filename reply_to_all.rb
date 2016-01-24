@@ -12,6 +12,7 @@ Plugin.create :reply_to_all do
 
     ids = opt.messages.to_s.scan(%r<@[a-zA-Z0-9]+>)
     rep_to = ids.uniq.join(' ')
+    rep_to.slice!("@#{Service.primary.idname} ")
 
     opt.widget.create_postbox(to: messages,
                               header: messages.map{|x| "#{rep_to}"}.join(' ') + ' ',
